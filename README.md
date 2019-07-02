@@ -1,6 +1,6 @@
-#OWM JAPIs
+# OWM JAPIs
 
-####Java Library for OpenWeatherMap.org Weather APIs
+#### Java Library for OpenWeatherMap.org Weather APIs
 
 OWM JAPIs lets you develop weather-aware applications for **Java and Android platforms** in minimum time using OWM JAPIs, an easy-to-use, detailed and documented weather APIs' wrapper library for retrieving weather data from OpenWeatherMap.org. You can easily **retrieve and use weather data** in your applications using this library.
 
@@ -10,7 +10,7 @@ Homepage: http://code.aksingh.net/owm-japis
 
 
 
-###Why to use OWM JAPIs?
+### Why to use OWM JAPIs?
 1. Free
 2. Easy to use
 3. Minimizes your code
@@ -19,18 +19,18 @@ OWM JAPIs lets you **focus just on your application's logic** and **weather retr
 
 
 
-##How to use OWM JAPIs?
+## How to use OWM JAPIs?
 Download the library's source and binaries from [OWM JAPIs Downloads][1].
 
 Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central repository][10].
 
 
 
-##Versions
-###2.5 (Compatible with OpenWeatherMap.org's API v2.5)
+## Versions
+### 2.5 (Compatible with OpenWeatherMap.org's API v2.5)
 
 
-####2.5.0.5 (latest)
+#### 2.5.0.5 (latest)
 
 **Bug-fix version:**
 
@@ -39,7 +39,7 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 3. Added proxy support to fetch data via a proxy server.
 
 
-####2.5.0.4
+#### 2.5.0.4
 
 **Bug-fix version:**
 
@@ -48,7 +48,7 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 3. Uploaded the library to Maven Central repository.
 
 
-####2.5.0.3
+#### 2.5.0.3
 
 **Implemented:**
 
@@ -78,7 +78,7 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 **Apologies for making such changes, but it was required to make things simpler. Don't worry, they're not going to change again. :)**
 
 
-####2.5.0.2
+#### 2.5.0.2
 
 **Bug-fix version:**
 
@@ -86,7 +86,7 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 2. Improved code formatting and readability (for developers).
 
 
-####2.5.0.1
+#### 2.5.0.1
 
 **Implemented:**
 
@@ -104,7 +104,7 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 
 
 
-##How to use OWM JAPIs?
+## How to use OWM JAPIs?
 Anyone with little coding knowledge of Java will feel at home while using this library.  **Identifiers are written to be self-explanatory and APIs' documentation** is also provided. It makes the coding process very easy, even for beginners.
 
 1. Add this JAR file in your project's libraries:
@@ -119,9 +119,9 @@ Kindly have a look on the example(s) below for clear understanding.
 
 
 
-##Example
+## Example
 ### Basic Example
-####Sample Code
+#### Sample Code
 
     import java.io.IOException;
     import java.net.MalformedURLException;
@@ -149,20 +149,20 @@ Kindly have a look on the example(s) below for clear understanding.
         }
     }
 
-####Output
+#### Output
 
     City: London
     Temperature: 73.4/68.72 'F
 
 
-###Advance Example
+### Advance Example
 You can simply use the APIs (as given in basic example) for learning, testing or experimenting with the functions provided in this library. But it may not be good enough for production or deployment environment.
 
 Professionally, you should always **write code which can handle errors/exceptions** at the runtime. OWM JAPIs also helps here – by providing checker functions which allows you to **check if a data is available or not**, i.e., that particular data is retrieved and parsed properly or not. Of course, exception handling can still be used, but these functions are really useful and make the retrieved-data-error-handling task very simple.
 
 Using OWM JAPIs, you can always check if a particular data is available or not. This is done by using the **has<DataName>()** functions. For example, **hasResponseCode()** function checks if the retrieved data has a response code or not; and if available, response code can be used to check if the whole data was downloaded and parsed correctly or not.
 
-####Sample Code
+#### Sample Code
 
     import java.io.IOException;
     import java.net.MalformedURLException;
@@ -200,31 +200,31 @@ Using OWM JAPIs, you can always check if a particular data is available or not. 
         }
     }
 
-####Output
+#### Output
 
     City: London
     Temperature: 73.4/68.72 'F
 
 
 
-##Source code
+## Source code
 Download the library's source code from [OWM JAPIs Source][2].
 
 
 
-##Bugs / Requests
+## Bugs / Requests
 Got a problem, error or bug in the library? Or want a new feature that's not already available in OWM JAPIs?
 
 Kindly post bugs or feature requests at [OWM JAPIs Issues][3] and I will try to solve/add it in the next release.
 
 
 
-##Developer
+## Developer
 **Ashutosh Kumar Singh** | [AKSingh.net][4] | [me@aksingh.net][9]
 
 
 
-##Credits
+## Credits
 1. [OpenWeatherMap.org][5]
 for providing free weather data and creating easy-to-use web APIs.
 
@@ -239,7 +239,7 @@ for reporting bugs, and even finding and sharing possible solutions for them.
 
 
 
-##License
+## License
 Copyright (c) 2013-2014 Ashutosh Kumar Singh `<me@aksingh.net>`
   
 Released under the terms of the [MIT license][7]. It's open source and developer-friendly.
