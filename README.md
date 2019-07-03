@@ -6,8 +6,11 @@ OWM JAPIs lets you develop weather-aware applications for **Java and Android pla
 
 OWM JAPIs allows you to **fetch weather data in only 3-5 lines of code** (excluding any other/skeleton code, of course). You can develop applications and services for multiple platforms using this library, such as Windows, Mac OS X, Linux, and Android.
 
-Homepage: http://code.aksingh.net/owm-japis
+#### Project history
 
+This is a fork of [akapribot/OWM-JAPIs](https://github.com/akapribot/OWM-JAPIs) which has been abandoned by the author
+in favor of a Kotlin rewrite: [aksinghnet/OWM-JAPIs](https://github.com/aksinghnet/OWM-JAPIs).
+I prefer this Java-based version and intent to maintain it and add bugfixes.
 
 
 ### Why to use OWM JAPIs?
