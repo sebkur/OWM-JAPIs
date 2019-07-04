@@ -36,8 +36,8 @@ import java.util.zip.InflaterInputStream;
 
 /**
  * <p>
- *     <b>The starting point for all API operations.</b>
- *     If you're new to this API, read the docs for this class first.
+ * <b>The starting point for all API operations.</b> If you're new to this API,
+ * read the docs for this class first.
  * </p>
  * <p>
  * Lets you access data from OpenWeatherMap.org using its Weather APIs.
@@ -58,7 +58,7 @@ import java.util.zip.InflaterInputStream;
  */
 public class OpenWeatherMap {
     /*
-    URLs and parameters for OWM.org
+     * URLs and parameters for OWM.org
      */
     private static final String URL_API = "http://api.openweathermap.org/data/2.5/";
     private static final String URL_CURRENT = "weather?";
@@ -76,7 +76,7 @@ public class OpenWeatherMap {
     private static final String PARAM_LANG = "lang=";
 
     /*
-    Instance Variables
+     * Instance Variables
      */
     private final OWMAddress owmAddress;
     private final OWMResponse owmResponse;
@@ -85,7 +85,8 @@ public class OpenWeatherMap {
     /**
      * Constructor
      *
-     * @param apiKey API key from OWM.org
+     * @param apiKey
+     *            API key from OWM.org
      * @see <a href="http://openweathermap.org/appid">OWM.org API Key</a>
      */
     public OpenWeatherMap(String apiKey) {
@@ -95,8 +96,10 @@ public class OpenWeatherMap {
     /**
      * Constructor
      *
-     * @param units  Any constant from Units
-     * @param apiKey API key from OWM.org
+     * @param units
+     *            Any constant from Units
+     * @param apiKey
+     *            API key from OWM.org
      * @see net.aksingh.owmjapis.OpenWeatherMap.Units
      * @see <a href="http://openweathermap.org/appid">OWM.org API Key</a>
      */
@@ -107,12 +110,16 @@ public class OpenWeatherMap {
     /**
      * Constructor
      *
-     * @param units  Any constant from Units
-     * @param lang   Any constant from Language
-     * @param apiKey API key from OWM.org
+     * @param units
+     *            Any constant from Units
+     * @param lang
+     *            Any constant from Language
+     * @param apiKey
+     *            API key from OWM.org
      * @see net.aksingh.owmjapis.OpenWeatherMap.Units
      * @see net.aksingh.owmjapis.OpenWeatherMap.Language
-     * @see <a href="http://openweathermap.org/current#multi">OWM.org's Multilingual support</a>
+     * @see <a href="http://openweathermap.org/current#multi">OWM.org's
+     *      Multilingual support</a>
      * @see <a href="http://openweathermap.org/appid">OWM.org's API Key</a>
      */
     public OpenWeatherMap(Units units, Language lang, String apiKey) {
@@ -122,7 +129,7 @@ public class OpenWeatherMap {
     }
 
     /*
-    Getters
+     * Getters
      */
     public OWMAddress getOwmAddressInstance() {
         return owmAddress;
@@ -145,13 +152,14 @@ public class OpenWeatherMap {
     }
 
     /*
-    Setters
+     * Setters
      */
 
     /**
      * Set units for getting data from OWM.org
      *
-     * @param units Any constant from Units
+     * @param units
+     *            Any constant from Units
      * @see net.aksingh.owmjapis.OpenWeatherMap.Units
      */
     public void setUnits(Units units) {
@@ -161,7 +169,8 @@ public class OpenWeatherMap {
     /**
      * Set API key for getting data from OWM.org
      *
-     * @param appId API key from OWM.org
+     * @param appId
+     *            API key from OWM.org
      * @see <a href="http://openweathermap.org/appid">OWM.org's API Key</a>
      */
     public void setApiKey(String appId) {
@@ -171,9 +180,11 @@ public class OpenWeatherMap {
     /**
      * Set language for getting data from OWM.org
      *
-     * @param lang Any constant from Language
+     * @param lang
+     *            Any constant from Language
      * @see net.aksingh.owmjapis.OpenWeatherMap.Language
-     * @see <a href="http://openweathermap.org/current#multi">OWM.org's Multilingual support</a>
+     * @see <a href="http://openweathermap.org/current#multi">OWM.org's
+     *      Multilingual support</a>
      */
     public void setLang(Language lang) {
         owmAddress.setLang(lang);
@@ -182,8 +193,10 @@ public class OpenWeatherMap {
     /**
      * Set proxy for getting data from OWM.org
      *
-     * @param ip IP address of the proxy
-     * @param port Port address of the proxy
+     * @param ip
+     *            IP address of the proxy
+     * @param port
+     *            Port address of the proxy
      */
     public void setProxy(String ip, int port) {
         owmProxy.setIp(ip);
@@ -195,10 +208,14 @@ public class OpenWeatherMap {
     /**
      * Set proxy and authentication details for getting data from OWM.org
      *
-     * @param ip IP address of the proxy
-     * @param port Port address of the proxy
-     * @param user User name for the proxy if required
-     * @param pass Password for the proxy if required
+     * @param ip
+     *            IP address of the proxy
+     * @param port
+     *            Port address of the proxy
+     * @param user
+     *            User name for the proxy if required
+     * @param pass
+     *            Password for the proxy if required
      */
     public void setProxy(String ip, int port, String user, String pass) {
         owmProxy.setIp(ip);
@@ -213,9 +230,10 @@ public class OpenWeatherMap {
         return this.currentWeatherFromRawResponse(response);
     }
 
-    public CurrentWeather currentWeatherByCityName(String cityName, String countryCode)
-            throws IOException, JSONException {
-        String response = owmResponse.currentWeatherByCityName(cityName, countryCode);
+    public CurrentWeather currentWeatherByCityName(String cityName,
+            String countryCode) throws IOException, JSONException {
+        String response = owmResponse.currentWeatherByCityName(cityName,
+                countryCode);
         return this.currentWeatherFromRawResponse(response);
     }
 
@@ -225,15 +243,17 @@ public class OpenWeatherMap {
         return this.currentWeatherFromRawResponse(response);
     }
 
-    public CurrentWeather currentWeatherByCoordinates(float latitude, float longitude)
-            throws JSONException {
-        String response = owmResponse.currentWeatherByCoordinates(latitude, longitude);
+    public CurrentWeather currentWeatherByCoordinates(float latitude,
+            float longitude) throws JSONException {
+        String response = owmResponse.currentWeatherByCoordinates(latitude,
+                longitude);
         return this.currentWeatherFromRawResponse(response);
     }
 
     public CurrentWeather currentWeatherFromRawResponse(String response)
             throws JSONException {
-        JSONObject jsonObj = (response != null) ? new JSONObject(response) : null;
+        JSONObject jsonObj = (response != null) ? new JSONObject(response)
+                : null;
         return new CurrentWeather(jsonObj);
     }
 
@@ -243,9 +263,10 @@ public class OpenWeatherMap {
         return this.hourlyForecastFromRawResponse(response);
     }
 
-    public HourlyForecast hourlyForecastByCityName(String cityName, String countryCode)
-            throws IOException, JSONException {
-        String response = owmResponse.hourlyForecastByCityName(cityName, countryCode);
+    public HourlyForecast hourlyForecastByCityName(String cityName,
+            String countryCode) throws IOException, JSONException {
+        String response = owmResponse.hourlyForecastByCityName(cityName,
+                countryCode);
         return this.hourlyForecastFromRawResponse(response);
     }
 
@@ -255,15 +276,17 @@ public class OpenWeatherMap {
         return this.hourlyForecastFromRawResponse(response);
     }
 
-    public HourlyForecast hourlyForecastByCoordinates(float latitude, float longitude)
-            throws JSONException {
-        String response = owmResponse.hourlyForecastByCoordinates(latitude, longitude);
+    public HourlyForecast hourlyForecastByCoordinates(float latitude,
+            float longitude) throws JSONException {
+        String response = owmResponse.hourlyForecastByCoordinates(latitude,
+                longitude);
         return this.hourlyForecastFromRawResponse(response);
     }
 
     public HourlyForecast hourlyForecastFromRawResponse(String response)
             throws JSONException {
-        JSONObject jsonObj = (response != null) ? new JSONObject(response) : null;
+        JSONObject jsonObj = (response != null) ? new JSONObject(response)
+                : null;
         return new HourlyForecast(jsonObj);
     }
 
@@ -273,9 +296,10 @@ public class OpenWeatherMap {
         return this.dailyForecastFromRawResponse(response);
     }
 
-    public DailyForecast dailyForecastByCityName(String cityName, String countryCode, byte count)
-            throws IOException, JSONException {
-        String response = owmResponse.dailyForecastByCityName(cityName, countryCode, count);
+    public DailyForecast dailyForecastByCityName(String cityName,
+            String countryCode, byte count) throws IOException, JSONException {
+        String response = owmResponse.dailyForecastByCityName(cityName,
+                countryCode, count);
         return this.dailyForecastFromRawResponse(response);
     }
 
@@ -285,15 +309,17 @@ public class OpenWeatherMap {
         return this.dailyForecastFromRawResponse(response);
     }
 
-    public DailyForecast dailyForecastByCoordinates(float latitude, float longitude, byte count)
-            throws JSONException {
-        String response = owmResponse.dailyForecastByCoordinates(latitude, longitude, count);
+    public DailyForecast dailyForecastByCoordinates(float latitude,
+            float longitude, byte count) throws JSONException {
+        String response = owmResponse.dailyForecastByCoordinates(latitude,
+                longitude, count);
         return this.dailyForecastFromRawResponse(response);
     }
 
     public DailyForecast dailyForecastFromRawResponse(String response)
             throws JSONException {
-        JSONObject jsonObj = (response != null) ? new JSONObject(response) : null;
+        JSONObject jsonObj = (response != null) ? new JSONObject(response)
+                : null;
         return new DailyForecast(jsonObj);
     }
 
@@ -312,9 +338,9 @@ public class OpenWeatherMap {
         Units(String unit) {
             this.unit = unit;
         }
-        
-        public String getCode(){
-        	return this.unit;
+
+        public String getCode() {
+            return this.unit;
         }
     }
 
@@ -349,9 +375,9 @@ public class OpenWeatherMap {
         Language(String lang) {
             this.lang = lang;
         }
-        
-        public String getCode(){
-        	return this.lang;
+
+        public String getCode() {
+            return this.lang;
         }
     }
 
@@ -376,22 +402,26 @@ public class OpenWeatherMap {
         public Proxy getProxy() {
             Proxy proxy = null;
 
-            if (ip != null && (! "".equals(ip)) && port != Integer.MIN_VALUE) {
-                proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, port));
+            if (ip != null && (!"".equals(ip)) && port != Integer.MIN_VALUE) {
+                proxy = new Proxy(Proxy.Type.HTTP,
+                        new InetSocketAddress(ip, port));
             }
 
-            if (user != null && (! "".equals(user)) && pass != null && (! "".equals(pass))) {
+            if (user != null && (!"".equals(user)) && pass != null
+                    && (!"".equals(pass))) {
                 Authenticator.setDefault(getAuthenticatorInstance(user, pass));
             }
 
             return proxy;
         }
 
-        private Authenticator getAuthenticatorInstance(final String user, final String pass) {
+        private Authenticator getAuthenticatorInstance(final String user,
+                final String pass) {
             Authenticator authenticator = new Authenticator() {
 
                 public PasswordAuthentication getPasswordAuthentication() {
-                    return (new PasswordAuthentication(user, pass.toCharArray()));
+                    return (new PasswordAuthentication(user,
+                            pass.toCharArray()));
                 }
             };
 
@@ -430,7 +460,7 @@ public class OpenWeatherMap {
         private Language lang;
 
         /*
-        Constructors
+         * Constructors
          */
         private OWMAddress(String appId) {
             this(Units.IMPERIAL, Language.ENGLISH, appId);
@@ -448,7 +478,7 @@ public class OpenWeatherMap {
         }
 
         /*
-        Getters
+         * Getters
          */
         private String getAppId() {
             return this.appId;
@@ -467,7 +497,7 @@ public class OpenWeatherMap {
         }
 
         /*
-        Setters
+         * Setters
          */
         private void setUnits(Units units) {
             this.units = units;
@@ -482,134 +512,140 @@ public class OpenWeatherMap {
         }
 
         /*
-        Addresses for current weather
+         * Addresses for current weather
          */
-        public String currentWeatherByCityName(String cityName) throws UnsupportedEncodingException {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_CURRENT)
-                    .append(PARAM_CITY_NAME).append(URLEncoder.encode(cityName, ENCODING)).append("&")
+        public String currentWeatherByCityName(String cityName)
+                throws UnsupportedEncodingException {
+            return new StringBuilder().append(URL_API).append(URL_CURRENT)
+                    .append(PARAM_CITY_NAME)
+                    .append(URLEncoder.encode(cityName, ENCODING)).append("&")
                     .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
+                    .append(PARAM_UNITS).append(this.units.getCode())
+                    .append("&").append(PARAM_LANG).append(this.lang.getCode())
+                    .append("&").append(PARAM_APPID).append(this.appId)
                     .toString();
         }
 
-        public String currentWeatherByCityName(String cityName, String countryCode) throws UnsupportedEncodingException {
-            return currentWeatherByCityName(new StringBuilder()
-                    .append(cityName).append(",").append(countryCode)
-                    .toString());
+        public String currentWeatherByCityName(String cityName,
+                String countryCode) throws UnsupportedEncodingException {
+            return currentWeatherByCityName(new StringBuilder().append(cityName)
+                    .append(",").append(countryCode).toString());
         }
 
         public String currentWeatherByCityCode(long cityCode) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_CURRENT)
-                    .append(PARAM_CITY_ID).append(Long.toString(cityCode)).append("&")
-                    .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
-                    .toString();
+            return new StringBuilder().append(URL_API).append(URL_CURRENT)
+                    .append(PARAM_CITY_ID).append(Long.toString(cityCode))
+                    .append("&").append(PARAM_MODE).append(this.mode)
+                    .append("&").append(PARAM_UNITS)
+                    .append(this.units.getCode()).append("&").append(PARAM_LANG)
+                    .append(this.lang.getCode()).append("&").append(PARAM_APPID)
+                    .append(this.appId).toString();
         }
 
-        public String currentWeatherByCoordinates(float latitude, float longitude) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_CURRENT)
-                    .append(PARAM_LATITUDE).append(Float.toString(latitude)).append("&")
-                    .append(PARAM_LONGITUDE).append(Float.toString(longitude)).append("&")
+        public String currentWeatherByCoordinates(float latitude,
+                float longitude) {
+            return new StringBuilder().append(URL_API).append(URL_CURRENT)
+                    .append(PARAM_LATITUDE).append(Float.toString(latitude))
+                    .append("&").append(PARAM_LONGITUDE)
+                    .append(Float.toString(longitude)).append("&")
                     .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
+                    .append(PARAM_UNITS).append(this.units.getCode())
+                    .append("&").append(PARAM_APPID).append(this.appId)
                     .toString();
         }
 
         /*
-        Addresses for hourly forecasts
+         * Addresses for hourly forecasts
          */
-        public String hourlyForecastByCityName(String cityName) throws UnsupportedEncodingException {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_HOURLY_FORECAST)
-                    .append(PARAM_CITY_NAME).append(URLEncoder.encode(cityName, ENCODING)).append("&")
+        public String hourlyForecastByCityName(String cityName)
+                throws UnsupportedEncodingException {
+            return new StringBuilder().append(URL_API)
+                    .append(URL_HOURLY_FORECAST).append(PARAM_CITY_NAME)
+                    .append(URLEncoder.encode(cityName, ENCODING)).append("&")
                     .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
+                    .append(PARAM_UNITS).append(this.units.getCode())
+                    .append("&").append(PARAM_LANG).append(this.lang.getCode())
+                    .append("&").append(PARAM_APPID).append(this.appId)
                     .toString();
         }
 
-        public String hourlyForecastByCityName(String cityName, String countryCode) throws UnsupportedEncodingException {
-            return hourlyForecastByCityName(new StringBuilder()
-                    .append(cityName).append(",").append(countryCode)
-                    .toString());
+        public String hourlyForecastByCityName(String cityName,
+                String countryCode) throws UnsupportedEncodingException {
+            return hourlyForecastByCityName(new StringBuilder().append(cityName)
+                    .append(",").append(countryCode).toString());
         }
 
         public String hourlyForecastByCityCode(long cityCode) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_HOURLY_FORECAST)
-                    .append(PARAM_CITY_ID).append(Long.toString(cityCode)).append("&")
+            return new StringBuilder().append(URL_API)
+                    .append(URL_HOURLY_FORECAST).append(PARAM_CITY_ID)
+                    .append(Long.toString(cityCode)).append("&")
                     .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
+                    .append(PARAM_UNITS).append(this.units.getCode())
+                    .append("&").append(PARAM_LANG).append(this.lang.getCode())
+                    .append("&").append(PARAM_APPID).append(this.appId)
                     .toString();
         }
 
-        public String hourlyForecastByCoordinates(float latitude, float longitude) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_HOURLY_FORECAST)
-                    .append(PARAM_LATITUDE).append(Float.toString(latitude)).append("&")
-                    .append(PARAM_LONGITUDE).append(Float.toString(longitude)).append("&")
-                    .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
-                    .toString();
+        public String hourlyForecastByCoordinates(float latitude,
+                float longitude) {
+            return new StringBuilder().append(URL_API)
+                    .append(URL_HOURLY_FORECAST).append(PARAM_LATITUDE)
+                    .append(Float.toString(latitude)).append("&")
+                    .append(PARAM_LONGITUDE).append(Float.toString(longitude))
+                    .append("&").append(PARAM_MODE).append(this.mode)
+                    .append("&").append(PARAM_UNITS)
+                    .append(this.units.getCode()).append("&").append(PARAM_LANG)
+                    .append(this.lang.getCode()).append("&").append(PARAM_APPID)
+                    .append(this.appId).toString();
         }
 
         /*
-        Addresses for daily forecasts
+         * Addresses for daily forecasts
          */
-        public String dailyForecastByCityName(String cityName, byte count) throws UnsupportedEncodingException {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_DAILY_FORECAST)
-                    .append(PARAM_CITY_NAME).append(URLEncoder.encode(cityName, ENCODING)).append("&")
-                    .append(PARAM_COUNT).append(Byte.toString(count)).append("&")
-                    .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
-                    .toString();
+        public String dailyForecastByCityName(String cityName, byte count)
+                throws UnsupportedEncodingException {
+            return new StringBuilder().append(URL_API)
+                    .append(URL_DAILY_FORECAST).append(PARAM_CITY_NAME)
+                    .append(URLEncoder.encode(cityName, ENCODING)).append("&")
+                    .append(PARAM_COUNT).append(Byte.toString(count))
+                    .append("&").append(PARAM_MODE).append(this.mode)
+                    .append("&").append(PARAM_UNITS)
+                    .append(this.units.getCode()).append("&").append(PARAM_LANG)
+                    .append(this.lang.getCode()).append("&").append(PARAM_APPID)
+                    .append(this.appId).toString();
         }
 
-        public String dailyForecastByCityName(String cityName, String countryCode, byte count) throws UnsupportedEncodingException {
-            return dailyForecastByCityName(new StringBuilder()
-                    .append(cityName).append(",").append(countryCode)
-                    .toString(), count);
+        public String dailyForecastByCityName(String cityName,
+                String countryCode, byte count)
+                throws UnsupportedEncodingException {
+            return dailyForecastByCityName(new StringBuilder().append(cityName)
+                    .append(",").append(countryCode).toString(), count);
         }
 
         public String dailyForecastByCityCode(long cityCode, byte count) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_DAILY_FORECAST)
-                    .append(PARAM_CITY_ID).append(Long.toString(cityCode)).append("&")
-                    .append(PARAM_COUNT).append(Byte.toString(count)).append("&")
-                    .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
-                    .toString();
+            return new StringBuilder().append(URL_API)
+                    .append(URL_DAILY_FORECAST).append(PARAM_CITY_ID)
+                    .append(Long.toString(cityCode)).append("&")
+                    .append(PARAM_COUNT).append(Byte.toString(count))
+                    .append("&").append(PARAM_MODE).append(this.mode)
+                    .append("&").append(PARAM_UNITS)
+                    .append(this.units.getCode()).append("&").append(PARAM_LANG)
+                    .append(this.lang.getCode()).append("&").append(PARAM_APPID)
+                    .append(this.appId).toString();
         }
 
-        public String dailyForecastByCoordinates(float latitude, float longitude, byte count) {
-            return new StringBuilder()
-                    .append(URL_API).append(URL_DAILY_FORECAST)
-                    .append(PARAM_LATITUDE).append(Float.toString(latitude)).append("&")
-                    .append(PARAM_LONGITUDE).append(Float.toString(longitude)).append("&")
-                    .append(PARAM_COUNT).append(Byte.toString(count)).append("&")
-                    .append(PARAM_MODE).append(this.mode).append("&")
-                    .append(PARAM_UNITS).append(this.units.getCode()).append("&")
-                    .append(PARAM_LANG).append(this.lang.getCode()).append("&")
-                    .append(PARAM_APPID).append(this.appId)
-                    .toString();
+        public String dailyForecastByCoordinates(float latitude,
+                float longitude, byte count) {
+            return new StringBuilder().append(URL_API)
+                    .append(URL_DAILY_FORECAST).append(PARAM_LATITUDE)
+                    .append(Float.toString(latitude)).append("&")
+                    .append(PARAM_LONGITUDE).append(Float.toString(longitude))
+                    .append("&").append(PARAM_COUNT)
+                    .append(Byte.toString(count)).append("&").append(PARAM_MODE)
+                    .append(this.mode).append("&").append(PARAM_UNITS)
+                    .append(this.units.getCode()).append("&").append(PARAM_LANG)
+                    .append(this.lang.getCode()).append("&").append(PARAM_APPID)
+                    .append(this.appId).toString();
         }
     }
 
@@ -628,15 +664,18 @@ public class OpenWeatherMap {
         }
 
         /*
-        Responses for current weather
+         * Responses for current weather
          */
-        public String currentWeatherByCityName(String cityName) throws UnsupportedEncodingException {
+        public String currentWeatherByCityName(String cityName)
+                throws UnsupportedEncodingException {
             String address = owmAddress.currentWeatherByCityName(cityName);
             return httpGET(address);
         }
 
-        public String currentWeatherByCityName(String cityName, String countryCode) throws UnsupportedEncodingException {
-            String address = owmAddress.currentWeatherByCityName(cityName, countryCode);
+        public String currentWeatherByCityName(String cityName,
+                String countryCode) throws UnsupportedEncodingException {
+            String address = owmAddress.currentWeatherByCityName(cityName,
+                    countryCode);
             return httpGET(address);
         }
 
@@ -645,21 +684,26 @@ public class OpenWeatherMap {
             return httpGET(address);
         }
 
-        public String currentWeatherByCoordinates(float latitude, float longitude) {
-            String address = owmAddress.currentWeatherByCoordinates(latitude, longitude);
+        public String currentWeatherByCoordinates(float latitude,
+                float longitude) {
+            String address = owmAddress.currentWeatherByCoordinates(latitude,
+                    longitude);
             return httpGET(address);
         }
 
         /*
-        Responses for hourly forecasts
+         * Responses for hourly forecasts
          */
-        public String hourlyForecastByCityName(String cityName) throws UnsupportedEncodingException {
+        public String hourlyForecastByCityName(String cityName)
+                throws UnsupportedEncodingException {
             String address = owmAddress.hourlyForecastByCityName(cityName);
             return httpGET(address);
         }
 
-        public String hourlyForecastByCityName(String cityName, String countryCode) throws UnsupportedEncodingException {
-            String address = owmAddress.hourlyForecastByCityName(cityName, countryCode);
+        public String hourlyForecastByCityName(String cityName,
+                String countryCode) throws UnsupportedEncodingException {
+            String address = owmAddress.hourlyForecastByCityName(cityName,
+                    countryCode);
             return httpGET(address);
         }
 
@@ -668,40 +712,53 @@ public class OpenWeatherMap {
             return httpGET(address);
         }
 
-        public String hourlyForecastByCoordinates(float latitude, float longitude) {
-            String address = owmAddress.hourlyForecastByCoordinates(latitude, longitude);
+        public String hourlyForecastByCoordinates(float latitude,
+                float longitude) {
+            String address = owmAddress.hourlyForecastByCoordinates(latitude,
+                    longitude);
             return httpGET(address);
         }
 
         /*
-        Responses for daily forecasts
+         * Responses for daily forecasts
          */
-        public String dailyForecastByCityName(String cityName, byte count) throws UnsupportedEncodingException {
-            String address = owmAddress.dailyForecastByCityName(cityName, count);
+        public String dailyForecastByCityName(String cityName, byte count)
+                throws UnsupportedEncodingException {
+            String address = owmAddress.dailyForecastByCityName(cityName,
+                    count);
             return httpGET(address);
         }
 
-        public String dailyForecastByCityName(String cityName, String countryCode, byte count) throws UnsupportedEncodingException {
-            String address = owmAddress.dailyForecastByCityName(cityName, countryCode, count);
+        public String dailyForecastByCityName(String cityName,
+                String countryCode, byte count)
+                throws UnsupportedEncodingException {
+            String address = owmAddress.dailyForecastByCityName(cityName,
+                    countryCode, count);
             return httpGET(address);
         }
 
         public String dailyForecastByCityCode(long cityCode, byte count) {
-            String address = owmAddress.dailyForecastByCityCode(cityCode, count);
+            String address = owmAddress.dailyForecastByCityCode(cityCode,
+                    count);
             return httpGET(address);
         }
 
-        public String dailyForecastByCoordinates(float latitude, float longitude, byte count) {
-            String address = owmAddress.dailyForecastByCoordinates(latitude, longitude, count);
+        public String dailyForecastByCoordinates(float latitude,
+                float longitude, byte count) {
+            String address = owmAddress.dailyForecastByCoordinates(latitude,
+                    longitude, count);
             return httpGET(address);
         }
 
         /**
          * Implements HTTP's GET method
          *
-         * @param requestAddress Address to be loaded
+         * @param requestAddress
+         *            Address to be loaded
          * @return Response if successful, else <code>null</code>
-         * @see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP - (9.3) GET</a>
+         * @see <a href=
+         *      "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP -
+         *      (9.3) GET</a>
          */
         private String httpGET(String requestAddress) {
             URL request;
@@ -715,7 +772,8 @@ public class OpenWeatherMap {
                 request = new URL(requestAddress);
 
                 if (owmProxy.getProxy() != null) {
-                    connection = (HttpURLConnection) request.openConnection(owmProxy.getProxy());
+                    connection = (HttpURLConnection) request
+                            .openConnection(owmProxy.getProxy());
                 } else {
                     connection = (HttpURLConnection) request.openConnection();
                 }
@@ -724,19 +782,28 @@ public class OpenWeatherMap {
                 connection.setUseCaches(false);
                 connection.setDoInput(true);
                 connection.setDoOutput(false);
-                connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
+                connection.setRequestProperty("Accept-Encoding",
+                        "gzip, deflate");
                 connection.connect();
 
                 if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     String encoding = connection.getContentEncoding();
 
                     try {
-                        if (encoding != null && "gzip".equalsIgnoreCase(encoding)) {
-                            reader = new BufferedReader(new InputStreamReader(new GZIPInputStream(connection.getInputStream())));
-                        } else if (encoding != null && "deflate".equalsIgnoreCase(encoding)) {
-                            reader = new BufferedReader(new InputStreamReader(new InflaterInputStream(connection.getInputStream(), new Inflater(true))));
+                        if (encoding != null
+                                && "gzip".equalsIgnoreCase(encoding)) {
+                            reader = new BufferedReader(
+                                    new InputStreamReader(new GZIPInputStream(
+                                            connection.getInputStream())));
+                        } else if (encoding != null
+                                && "deflate".equalsIgnoreCase(encoding)) {
+                            reader = new BufferedReader(new InputStreamReader(
+                                    new InflaterInputStream(
+                                            connection.getInputStream(),
+                                            new Inflater(true))));
                         } else {
-                            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                            reader = new BufferedReader(new InputStreamReader(
+                                    connection.getInputStream()));
                         }
 
                         while ((tmpStr = reader.readLine()) != null) {
@@ -755,7 +822,8 @@ public class OpenWeatherMap {
                     }
                 } else { // if HttpURLConnection is not okay
                     try {
-                        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+                        reader = new BufferedReader(new InputStreamReader(
+                                connection.getErrorStream()));
                         while ((tmpStr = reader.readLine()) != null) {
                             response = tmpStr;
                         }

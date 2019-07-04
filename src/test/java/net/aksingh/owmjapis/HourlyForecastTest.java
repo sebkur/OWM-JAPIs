@@ -58,13 +58,15 @@ public class HourlyForecastTest {
                 }
             }
 
-            System.out.println("Total forecast instances: " + hf.getForecastCount());
+            System.out.println(
+                    "Total forecast instances: " + hf.getForecastCount());
             System.out.println();
 
             for (int i = 0; i < hf.getForecastCount(); i++) {
                 HourlyForecast.Forecast forecast = hf.getForecastInstance(i);
 
-                System.out.println("*** Forecast instance number " + (i+1) + " ***");
+                System.out.println(
+                        "*** Forecast instance number " + (i + 1) + " ***");
 
                 if (forecast.hasDateTime()) {
                     System.out.println(forecast.getDateTime());

@@ -53,7 +53,6 @@ public class CurrentWeatherTest {
             }
             System.out.println();
 
-
             if (cw.hasCityCode()) {
                 System.out.println("City code: " + cw.getCityCode());
             }

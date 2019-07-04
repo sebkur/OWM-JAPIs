@@ -37,9 +37,11 @@ public class Tools {
      * Converts degree to direction.
      * </p>
      *
-     * @param degree Degree of wind as received from OWM.org
+     * @param degree
+     *            Degree of wind as received from OWM.org
      * @return Direction
-     * @throws IllegalArgumentException Degree should be between 0 and 360.
+     * @throws IllegalArgumentException
+     *             Degree should be between 0 and 360.
      */
     public String convertDegree2Direction(float degree)
             throws IllegalArgumentException {
@@ -47,7 +49,8 @@ public class Tools {
 
         // degree should be between 0 and 360
         if ((degree < 0.0f) || (degree > 360.0f)) {
-            throw new IllegalArgumentException("Degree cannot be less than 0 or more than 360.");
+            throw new IllegalArgumentException(
+                    "Degree cannot be less than 0 or more than 360.");
         }
 
         if (degree <= 11.25f) {

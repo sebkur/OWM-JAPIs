@@ -33,9 +33,9 @@ import java.util.List;
 
 /**
  * <p>
- * Provides default behaviours and implementations for:
- * 1. {@link net.aksingh.owmjapis.CurrentWeather}
- * It defines common methods like <code>has</code>, <code>get</code> and some others.
+ * Provides default behaviours and implementations for: 1.
+ * {@link net.aksingh.owmjapis.CurrentWeather} It defines common methods like
+ * <code>has</code>, <code>get</code> and some others.
  * </p>
  *
  * @author Ashutosh Kumar Singh
@@ -44,7 +44,7 @@ import java.util.List;
  */
 public abstract class AbstractWeather extends AbstractResponse {
     /*
-    JSON Keys
+     * JSON Keys
      */
     static final String JSON_CLOUDS = "clouds";
     static final String JSON_COORD = "coord";
@@ -54,7 +54,7 @@ public abstract class AbstractWeather extends AbstractResponse {
     private static final String JSON_DATE_TIME = "dt";
 
     /*
-    Instance variables
+     * Instance variables
      */
     private final Date dateTime;
 
@@ -62,7 +62,7 @@ public abstract class AbstractWeather extends AbstractResponse {
     private final List<Weather> weatherList;
 
     /*
-    Constructors
+     * Constructors
      */
     AbstractWeather() {
         super();
@@ -75,16 +75,23 @@ public abstract class AbstractWeather extends AbstractResponse {
     AbstractWeather(JSONObject jsonObj) {
         super(jsonObj);
 
-        long sec = (jsonObj != null) ? jsonObj.optLong(JSON_DATE_TIME, Long.MIN_VALUE) : Long.MIN_VALUE;
+        long sec = (jsonObj != null)
+                ? jsonObj.optLong(JSON_DATE_TIME, Long.MIN_VALUE)
+                : Long.MIN_VALUE;
         if (sec != Long.MIN_VALUE) { // converting seconds to Date object
             this.dateTime = new Date(sec * 1000);
         } else {
             this.dateTime = null;
         }
 
-        JSONArray weatherArray = (jsonObj != null) ? jsonObj.optJSONArray(JSON_WEATHER) : new JSONArray();
-        this.weatherList = (weatherArray != null) ? new ArrayList<Weather>(weatherArray.length()) : Collections.EMPTY_LIST;
-        if (weatherArray != null && this.weatherList != Collections.EMPTY_LIST) {
+        JSONArray weatherArray = (jsonObj != null)
+                ? jsonObj.optJSONArray(JSON_WEATHER)
+                : new JSONArray();
+        this.weatherList = (weatherArray != null)
+                ? new ArrayList<Weather>(weatherArray.length())
+                : Collections.EMPTY_LIST;
+        if (weatherArray != null
+                && this.weatherList != Collections.EMPTY_LIST) {
             for (int i = 0; i < weatherArray.length(); i++) {
                 JSONObject weatherObj = weatherArray.optJSONObject(i);
                 if (weatherObj != null) {
@@ -96,14 +103,16 @@ public abstract class AbstractWeather extends AbstractResponse {
     }
 
     /**
-     * @return <code>true</code> if date/time is available, otherwise <code>false</code>.
+     * @return <code>true</code> if date/time is available, otherwise
+     *         <code>false</code>.
      */
     public boolean hasDateTime() {
         return this.dateTime != null;
     }
 
     /**
-     * @return <code>true</code> if Weather instance(s) is available, otherwise <code>false</code>.
+     * @return <code>true</code> if Weather instance(s) is available, otherwise
+     *         <code>false</code>.
      */
     public boolean hasWeatherInstance() {
         return weatherCount != 0;
@@ -124,7 +133,8 @@ public abstract class AbstractWeather extends AbstractResponse {
     }
 
     /**
-     * @param index Index of Weather instance in the list.
+     * @param index
+     *            Index of Weather instance in the list.
      * @return Weather instance if available, otherwise <code>null</code>.
      */
     public Weather getWeatherInstance(int index) {
@@ -150,20 +160,23 @@ public abstract class AbstractWeather extends AbstractResponse {
         }
 
         Clouds(JSONObject jsonObj) {
-            this.percentOfClouds = (float) jsonObj.optDouble(JSON_CLOUDS_ALL, Double.NaN);
+            this.percentOfClouds = (float) jsonObj.optDouble(JSON_CLOUDS_ALL,
+                    Double.NaN);
         }
 
         /**
          * Tells if percentage of clouds is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasPercentageOfClouds() {
             return !Float.isNaN(this.percentOfClouds);
         }
 
         /**
-         * @return Percentage of all clouds if available, otherwise <code>Float.NaN</code>.
+         * @return Percentage of all clouds if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getPercentageOfClouds() {
             return this.percentOfClouds;
@@ -192,14 +205,17 @@ public abstract class AbstractWeather extends AbstractResponse {
         }
 
         Coord(JSONObject jsonObj) {
-            this.lat = (float) jsonObj.optDouble(JSON_COORD_LATITUDE, Double.NaN);
-            this.lon = (float) jsonObj.optDouble(JSON_COORD_LONGITUDE, Double.NaN);
+            this.lat = (float) jsonObj.optDouble(JSON_COORD_LATITUDE,
+                    Double.NaN);
+            this.lon = (float) jsonObj.optDouble(JSON_COORD_LONGITUDE,
+                    Double.NaN);
         }
 
         /**
          * Tells if the latitude of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasLatitude() {
             return !Float.isNaN(this.lat);
@@ -208,21 +224,24 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if the longitude of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasLongitude() {
             return !Float.isNaN(this.lon);
         }
 
         /**
-         * @return Latitude of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Latitude of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getLatitude() {
             return this.lat;
         }
 
         /**
-         * @return Longitude of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Longitude of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getLongitude() {
             return this.lon;
@@ -231,7 +250,8 @@ public abstract class AbstractWeather extends AbstractResponse {
 
     /**
      * <p>
-     * Provides default behaviours for Main, i.e., main weather elements like temperature, humidity, etc.
+     * Provides default behaviours for Main, i.e., main weather elements like
+     * temperature, humidity, etc.
      * </p>
      *
      * @author Ashutosh Kumar Singh
@@ -262,16 +282,21 @@ public abstract class AbstractWeather extends AbstractResponse {
 
         Main(JSONObject jsonObj) {
             this.temp = (float) jsonObj.optDouble(JSON_MAIN_TEMP, Double.NaN);
-            this.minTemp = (float) jsonObj.optDouble(JSON_MAIN_TEMP_MIN, Double.NaN);
-            this.maxTemp = (float) jsonObj.optDouble(JSON_MAIN_TEMP_MAX, Double.NaN);
-            this.pressure = (float) jsonObj.optDouble(JSON_MAIN_PRESSURE, Double.NaN);
-            this.humidity = (float) jsonObj.optDouble(JSON_MAIN_HUMIDITY, Double.NaN);
+            this.minTemp = (float) jsonObj.optDouble(JSON_MAIN_TEMP_MIN,
+                    Double.NaN);
+            this.maxTemp = (float) jsonObj.optDouble(JSON_MAIN_TEMP_MAX,
+                    Double.NaN);
+            this.pressure = (float) jsonObj.optDouble(JSON_MAIN_PRESSURE,
+                    Double.NaN);
+            this.humidity = (float) jsonObj.optDouble(JSON_MAIN_HUMIDITY,
+                    Double.NaN);
         }
 
         /**
          * Tells if the temperature of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasTemperature() {
             return !Float.isNaN(this.temp);
@@ -280,7 +305,8 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if the minimum temperature of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasMinTemperature() {
             return !Float.isNaN(this.minTemp);
@@ -289,7 +315,8 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if the maximum temperature of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasMaxTemperature() {
             return !Float.isNaN(this.maxTemp);
@@ -298,7 +325,8 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if pressure of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasPressure() {
             return !Float.isNaN(this.pressure);
@@ -307,42 +335,48 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if humidity of the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>
          */
         public boolean hasHumidity() {
             return !Float.isNaN(this.humidity);
         }
 
         /**
-         * @return Temperature of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Temperature of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getTemperature() {
             return this.temp;
         }
 
         /**
-         * @return Minimum temperature of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Minimum temperature of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getMinTemperature() {
             return this.minTemp;
         }
 
         /**
-         * @return Maximum temperature of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Maximum temperature of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getMaxTemperature() {
             return this.maxTemp;
         }
 
         /**
-         * @return Pressure of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Pressure of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getPressure() {
             return this.pressure;
         }
 
         /**
-         * @return Humidity of the city if available, otherwise <code>Float.NaN</code>.
+         * @return Humidity of the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getHumidity() {
             return this.humidity;
@@ -351,18 +385,17 @@ public abstract class AbstractWeather extends AbstractResponse {
 
     /**
      * <p>
-     * Parses weather data and provides methods to get/access the same information.
-     * This class provides <code>has</code> and <code>get</code> methods to access the information.
+     * Parses weather data and provides methods to get/access the same
+     * information. This class provides <code>has</code> and <code>get</code>
+     * methods to access the information.
      * </p>
      * <p>
-     * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-     * (successfully downloaded) and was parsed correctly.
-     * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-     * methods will give value as per following basis:
-     * Boolean: <code>false</code>
-     * Integral: Minimum value (MIN_VALUE)
-     * Floating point: Not a number (NaN)
-     * Others: <code>null</code>
+     * <code>has</code> methods can be used to check if the data exists, i.e.,
+     * if the data was available (successfully downloaded) and was parsed
+     * correctly. <code>get</code> methods can be used to access the data, if
+     * the data exists, otherwise <code>get</code> methods will give value as
+     * per following basis: Boolean: <code>false</code> Integral: Minimum value
+     * (MIN_VALUE) Floating point: Not a number (NaN) Others: <code>null</code>
      * </p>
      *
      * @author Ashutosh Kumar Singh
@@ -390,14 +423,16 @@ public abstract class AbstractWeather extends AbstractResponse {
         Weather(JSONObject jsonObj) {
             this.id = jsonObj.optInt(JSON_WEATHER_ID, Integer.MIN_VALUE);
             this.name = jsonObj.optString(JSON_WEATHER_MAIN, null);
-            this.description = jsonObj.optString(JSON_WEATHER_DESCRIPTION, null);
+            this.description = jsonObj.optString(JSON_WEATHER_DESCRIPTION,
+                    null);
             this.icon = jsonObj.optString(JSON_WEATHER_ICON, null);
         }
 
         /**
          * Tells if weather's code is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWeatherCode() {
             return this.id != Integer.MIN_VALUE;
@@ -406,53 +441,60 @@ public abstract class AbstractWeather extends AbstractResponse {
         /**
          * Tells if weather's name is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWeatherName() {
-            return this.name != null && (! "".equals(this.name));
+            return this.name != null && (!"".equals(this.name));
         }
 
         /**
          * Tells if weather's description is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWeatherDescription() {
-            return this.description != null && (! "".equals(this.description));
+            return this.description != null && (!"".equals(this.description));
         }
 
         /**
          * Tells if name of weather's icon is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWeatherIconName() {
-            return this.icon != null && (! "".equals(this.icon));
+            return this.icon != null && (!"".equals(this.icon));
         }
 
         /**
-         * @return Code for weather of the city if available, otherwise <code>Integer.MIN_VALUE</code>.
+         * @return Code for weather of the city if available, otherwise
+         *         <code>Integer.MIN_VALUE</code>.
          */
         public int getWeatherCode() {
             return this.id;
         }
 
         /**
-         * @return Name for weather of the city if available, otherwise <code>null</code>.
+         * @return Name for weather of the city if available, otherwise
+         *         <code>null</code>.
          */
         public String getWeatherName() {
             return this.name;
         }
 
         /**
-         * @return Description for weather of the city if available, otherwise <code>null</code>.
+         * @return Description for weather of the city if available, otherwise
+         *         <code>null</code>.
          */
         public String getWeatherDescription() {
             return this.description;
         }
 
         /**
-         * @return Name of icon for weather of the city if available, otherwise <code>null</code>.
+         * @return Name of icon for weather of the city if available, otherwise
+         *         <code>null</code>.
          */
         public String getWeatherIconName() {
             return this.icon;
@@ -482,36 +524,42 @@ public abstract class AbstractWeather extends AbstractResponse {
 
         Wind(JSONObject jsonObj) {
             this.speed = (float) jsonObj.optDouble(JSON_WIND_SPEED, Double.NaN);
-            this.degree = (float) jsonObj.optDouble(JSON_WIND_DEGREE, Double.NaN);
+            this.degree = (float) jsonObj.optDouble(JSON_WIND_DEGREE,
+                    Double.NaN);
         }
 
         /**
          * Tells if speed of wind in the city is available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWindSpeed() {
             return !Float.isNaN(this.speed);
         }
 
         /**
-         * Tells if degree (degree gives direction) of wind in the city is available or not.
+         * Tells if degree (degree gives direction) of wind in the city is
+         * available or not.
          *
-         * @return <code>true</code> if data available, otherwise <code>false</code>.
+         * @return <code>true</code> if data available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWindDegree() {
-            return this.hasWindSpeed() && (! Float.isNaN(this.degree));
+            return this.hasWindSpeed() && (!Float.isNaN(this.degree));
         }
 
         /**
-         * @return Speed of wind in the city if available, otherwise <code>Float.NaN</code>.
+         * @return Speed of wind in the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getWindSpeed() {
             return this.speed;
         }
 
         /**
-         * @return Degree of wind in the city if available, otherwise <code>Float.NaN</code>.
+         * @return Degree of wind in the city if available, otherwise
+         *         <code>Float.NaN</code>.
          */
         public float getWindDegree() {
             return this.degree;

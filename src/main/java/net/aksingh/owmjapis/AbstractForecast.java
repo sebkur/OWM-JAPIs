@@ -22,16 +22,16 @@
 
 package net.aksingh.owmjapis;
 
-import org.json.JSONObject;
-
 import java.io.Serializable;
+
+import org.json.JSONObject;
 
 /**
  * <p>
- * Provides default behaviours and implementations for:
- * 1. {@link net.aksingh.owmjapis.HourlyForecast}
- * 2. {@link net.aksingh.owmjapis.DailyForecast}
- * It defines common methods like <code>has</code>, <code>get</code> and some others.
+ * Provides default behaviours and implementations for: 1.
+ * {@link net.aksingh.owmjapis.HourlyForecast} 2.
+ * {@link net.aksingh.owmjapis.DailyForecast} It defines common methods like
+ * <code>has</code>, <code>get</code> and some others.
  * </p>
  *
  * @author Ashutosh Kumar Singh
@@ -40,7 +40,7 @@ import java.io.Serializable;
  */
 public abstract class AbstractForecast extends AbstractResponse {
     /*
-    JSON Keys
+     * JSON Keys
      */
     static final String JSON_FORECAST_LIST = "list";
     static final String JSON_MESSAGE = "message";
@@ -48,7 +48,7 @@ public abstract class AbstractForecast extends AbstractResponse {
     static final String JSON_FORECAST_COUNT = "cnt";
 
     /*
-    Instance variables
+     * Instance variables
      */
     private final double message;
 
@@ -56,7 +56,7 @@ public abstract class AbstractForecast extends AbstractResponse {
     private final int forecastCount;
 
     /*
-    Constructors
+     * Constructors
      */
     AbstractForecast() {
         super();
@@ -69,29 +69,38 @@ public abstract class AbstractForecast extends AbstractResponse {
     AbstractForecast(JSONObject jsonObj) {
         super(jsonObj);
 
-        this.message = (jsonObj != null) ? jsonObj.optDouble(JSON_MESSAGE, Double.NaN) : Double.NaN;
+        this.message = (jsonObj != null)
+                ? jsonObj.optDouble(JSON_MESSAGE, Double.NaN)
+                : Double.NaN;
 
-        this.city = (jsonObj != null) ? new City(jsonObj.optJSONObject(JSON_CITY)) : null;
+        this.city = (jsonObj != null)
+                ? new City(jsonObj.optJSONObject(JSON_CITY))
+                : null;
 
-        this.forecastCount = (jsonObj != null) ? jsonObj.optInt(JSON_FORECAST_COUNT, 0) : 0;
+        this.forecastCount = (jsonObj != null)
+                ? jsonObj.optInt(JSON_FORECAST_COUNT, 0)
+                : 0;
     }
 
     /**
-     * @return <code>true</code> if message is available, otherwise <code>false</code>.
+     * @return <code>true</code> if message is available, otherwise
+     *         <code>false</code>.
      */
     public boolean hasMessage() {
         return (this.message != Double.NaN);
     }
 
     /**
-     * @return <code>true</code> if count of forecasts is available, otherwise <code>false</code>.
+     * @return <code>true</code> if count of forecasts is available, otherwise
+     *         <code>false</code>.
      */
     public boolean hasForecastCount() {
         return (this.forecastCount != 0);
     }
 
     /**
-     * @return <code>true</code> if message is available, otherwise <code>false</code>.
+     * @return <code>true</code> if message is available, otherwise
+     *         <code>false</code>.
      */
     public boolean hasCityInstance() {
         return (this.city != null);
@@ -149,13 +158,24 @@ public abstract class AbstractForecast extends AbstractResponse {
         }
 
         City(JSONObject jsonObj) {
-            this.cityID = (jsonObj != null) ? jsonObj.optLong(JSON_CITY_ID, Long.MIN_VALUE) : Long.MIN_VALUE;
-            this.cityName = (jsonObj != null) ? jsonObj.optString(JSON_CITY_NAME, null) : null;
-            this.countryCode = (jsonObj != null) ? jsonObj.optString(JSON_CITY_COUNTRY_CODE, null) : null;
-            this.population = (jsonObj != null) ? jsonObj.optLong(JSON_CITY_POPULATION, Long.MIN_VALUE) : Long.MIN_VALUE;
+            this.cityID = (jsonObj != null)
+                    ? jsonObj.optLong(JSON_CITY_ID, Long.MIN_VALUE)
+                    : Long.MIN_VALUE;
+            this.cityName = (jsonObj != null)
+                    ? jsonObj.optString(JSON_CITY_NAME, null)
+                    : null;
+            this.countryCode = (jsonObj != null)
+                    ? jsonObj.optString(JSON_CITY_COUNTRY_CODE, null)
+                    : null;
+            this.population = (jsonObj != null)
+                    ? jsonObj.optLong(JSON_CITY_POPULATION, Long.MIN_VALUE)
+                    : Long.MIN_VALUE;
 
-            JSONObject jsonObjCoord = (jsonObj != null) ? jsonObj.optJSONObject(JSON_CITY_COORD) : null;
-            this.coord = (jsonObjCoord != null) ? new Coord(jsonObjCoord) : null;
+            JSONObject jsonObjCoord = (jsonObj != null)
+                    ? jsonObj.optJSONObject(JSON_CITY_COORD)
+                    : null;
+            this.coord = (jsonObjCoord != null) ? new Coord(jsonObjCoord)
+                    : null;
         }
 
         public boolean hasCityCode() {
@@ -175,7 +195,8 @@ public abstract class AbstractForecast extends AbstractResponse {
         }
 
         /**
-         * @return <code>true</code> if Coord instance is available, otherwise <code>false</code>.
+         * @return <code>true</code> if Coord instance is available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasCoordInstance() {
             return coord != null;
@@ -204,7 +225,6 @@ public abstract class AbstractForecast extends AbstractResponse {
             return this.coord;
         }
 
-
         public static class Coord extends AbstractWeather.Coord {
 
             Coord() {
@@ -219,18 +239,17 @@ public abstract class AbstractForecast extends AbstractResponse {
 
     /**
      * <p>
-     * Parses forecast data (one element in the forecastList) and provides methods to get/access the same information.
-     * This class provides <code>has</code> and <code>get</code> methods to access the information.
+     * Parses forecast data (one element in the forecastList) and provides
+     * methods to get/access the same information. This class provides
+     * <code>has</code> and <code>get</code> methods to access the information.
      * </p>
      * <p>
-     * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-     * (successfully downloaded) and was parsed correctly.
-     * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-     * methods will give value as per following basis:
-     * Boolean: <code>false</code>
-     * Integral: Minimum value (MIN_VALUE)
-     * Floating point: Not a number (NaN)
-     * Others: <code>null</code>
+     * <code>has</code> methods can be used to check if the data exists, i.e.,
+     * if the data was available (successfully downloaded) and was parsed
+     * correctly. <code>get</code> methods can be used to access the data, if
+     * the data exists, otherwise <code>get</code> methods will give value as
+     * per following basis: Boolean: <code>false</code> Integral: Minimum value
+     * (MIN_VALUE) Floating point: Not a number (NaN) Others: <code>null</code>
      * </p>
      *
      * @author Ashutosh Kumar Singh

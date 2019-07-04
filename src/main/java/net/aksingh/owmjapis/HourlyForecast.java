@@ -32,40 +32,45 @@ import java.util.List;
 
 /**
  * <p>
- * Parses hourly forecast data and provides methods to get/access the same information.
- * This class provides <code>has</code> and <code>get</code> methods to access the information.
+ * Parses hourly forecast data and provides methods to get/access the same
+ * information. This class provides <code>has</code> and <code>get</code>
+ * methods to access the information.
  * </p>
  * <p>
- * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
- * (successfully downloaded) and was parsed correctly.
- * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
- * methods will give value as per following basis:
- * Boolean: <code>false</code>
- * Integral: Minimum value (MIN_VALUE)
- * Floating point: Not a number (NaN)
- * Others: <code>null</code>
+ * <code>has</code> methods can be used to check if the data exists, i.e., if
+ * the data was available (successfully downloaded) and was parsed correctly.
+ * <code>get</code> methods can be used to access the data, if the data exists,
+ * otherwise <code>get</code> methods will give value as per following basis:
+ * Boolean: <code>false</code> Integral: Minimum value (MIN_VALUE) Floating
+ * point: Not a number (NaN) Others: <code>null</code>
  * </p>
  *
  * @author Ashutosh Kumar Singh
  * @version 2014/12/27
- * @see <a href="http://openweathermap.org/forecast">OWM's Weather Forecast API</a>
+ * @see <a href="http://openweathermap.org/forecast">OWM's Weather Forecast
+ *      API</a>
  * @since 2.5.0.3
  */
 public class HourlyForecast extends AbstractForecast {
     /*
-    Instance variables
+     * Instance variables
      */
     private final List<Forecast> forecastList;
 
     /*
-    Constructor
+     * Constructor
      */
     HourlyForecast(JSONObject jsonObj) {
         super(jsonObj);
 
-        JSONArray forecastArr = (jsonObj != null) ? jsonObj.optJSONArray(this.JSON_FORECAST_LIST) : new JSONArray();
-        this.forecastList = (forecastArr != null) ? new ArrayList<Forecast>(forecastArr.length()) : Collections.EMPTY_LIST;
-        if (forecastArr != null && this.forecastList != Collections.EMPTY_LIST) {
+        JSONArray forecastArr = (jsonObj != null)
+                ? jsonObj.optJSONArray(this.JSON_FORECAST_LIST)
+                : new JSONArray();
+        this.forecastList = (forecastArr != null)
+                ? new ArrayList<Forecast>(forecastArr.length())
+                : Collections.EMPTY_LIST;
+        if (forecastArr != null
+                && this.forecastList != Collections.EMPTY_LIST) {
             for (int i = 0; i < forecastArr.length(); i++) {
                 JSONObject forecastObj = forecastArr.optJSONObject(i);
                 if (forecastObj != null) {
@@ -76,7 +81,8 @@ public class HourlyForecast extends AbstractForecast {
     }
 
     /**
-     * @param index Index of Forecast instance in the list.
+     * @param index
+     *            Index of Forecast instance in the list.
      * @return Forecast instance if available, otherwise <code>null</code>.
      */
     public Forecast getForecastInstance(int index) {
@@ -85,29 +91,28 @@ public class HourlyForecast extends AbstractForecast {
 
     /**
      * <p>
-     * Parses forecast data (one element in the forecastList) and provides methods to get/access the same information.
-     * This class provides <code>has</code> and <code>get</code> methods to access the information.
+     * Parses forecast data (one element in the forecastList) and provides
+     * methods to get/access the same information. This class provides
+     * <code>has</code> and <code>get</code> methods to access the information.
      * </p>
      * <p>
-     * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-     * (successfully downloaded) and was parsed correctly.
-     * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-     * methods will give value as per following basis:
-     * Boolean: <code>false</code>
-     * Integral: Minimum value (MIN_VALUE)
-     * Floating point: Not a number (NaN)
-     * Others: <code>null</code>
+     * <code>has</code> methods can be used to check if the data exists, i.e.,
+     * if the data was available (successfully downloaded) and was parsed
+     * correctly. <code>get</code> methods can be used to access the data, if
+     * the data exists, otherwise <code>get</code> methods will give value as
+     * per following basis: Boolean: <code>false</code> Integral: Minimum value
+     * (MIN_VALUE) Floating point: Not a number (NaN) Others: <code>null</code>
      * </p>
      */
     public static class Forecast extends AbstractForecast.Forecast {
         /*
-        JSON Keys
+         * JSON Keys
          */
         private static final String JSON_SYS = "sys";
         private static final String JSON_DT_TEXT = "dt_txt";
 
         /*
-        Instance Variables
+         * Instance Variables
          */
         private final String dateTimeText;
 
@@ -117,23 +122,34 @@ public class HourlyForecast extends AbstractForecast {
         private final Wind wind;
 
         /*
-        Constructor
+         * Constructor
          */
         Forecast(JSONObject jsonObj) {
             super(jsonObj);
 
-            this.dateTimeText = (jsonObj != null) ? jsonObj.optString(JSON_DT_TEXT, null) : null;
+            this.dateTimeText = (jsonObj != null)
+                    ? jsonObj.optString(JSON_DT_TEXT, null)
+                    : null;
 
-            JSONObject jsonObjClouds = (jsonObj != null) ? jsonObj.optJSONObject(JSON_CLOUDS) : null;
-            this.clouds = (jsonObjClouds != null) ? new Clouds(jsonObjClouds) : null;
+            JSONObject jsonObjClouds = (jsonObj != null)
+                    ? jsonObj.optJSONObject(JSON_CLOUDS)
+                    : null;
+            this.clouds = (jsonObjClouds != null) ? new Clouds(jsonObjClouds)
+                    : null;
 
-            JSONObject jsonObjMain = (jsonObj != null) ? jsonObj.optJSONObject(JSON_MAIN) : null;
+            JSONObject jsonObjMain = (jsonObj != null)
+                    ? jsonObj.optJSONObject(JSON_MAIN)
+                    : null;
             this.main = (jsonObjMain != null) ? new Main(jsonObjMain) : null;
 
-            JSONObject jsonObjSys = (jsonObj != null) ? jsonObj.optJSONObject(JSON_SYS) : null;
+            JSONObject jsonObjSys = (jsonObj != null)
+                    ? jsonObj.optJSONObject(JSON_SYS)
+                    : null;
             this.sys = (jsonObjSys != null) ? new Sys(jsonObjSys) : null;
 
-            JSONObject jsonObjWind = (jsonObj != null) ? jsonObj.optJSONObject(JSON_WIND) : null;
+            JSONObject jsonObjWind = (jsonObj != null)
+                    ? jsonObj.optJSONObject(JSON_WIND)
+                    : null;
             this.wind = (jsonObjWind != null) ? new Wind(jsonObjWind) : null;
         }
 
@@ -142,28 +158,32 @@ public class HourlyForecast extends AbstractForecast {
         }
 
         /**
-         * @return <code>true</code> if Clouds instance is available, otherwise <code>false</code>.
+         * @return <code>true</code> if Clouds instance is available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasCloudsInstance() {
             return clouds != null;
         }
 
         /**
-         * @return <code>true</code> if Main instance is available, otherwise <code>false</code>.
+         * @return <code>true</code> if Main instance is available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasMainInstance() {
             return main != null;
         }
 
         /**
-         * @return <code>true</code> if Sys instance is available, otherwise <code>false</code>.
+         * @return <code>true</code> if Sys instance is available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasSysInstance() {
             return sys != null;
         }
 
         /**
-         * @return <code>true</code> if Wind instance is available, otherwise <code>false</code>.
+         * @return <code>true</code> if Wind instance is available, otherwise
+         *         <code>false</code>.
          */
         public boolean hasWindInstance() {
             return wind != null;
@@ -203,18 +223,18 @@ public class HourlyForecast extends AbstractForecast {
 
         /**
          * <p>
-         * Parses clouds data and provides methods to get/access the same information.
-         * This class provides <code>has</code> and <code>get</code> methods to access the information.
+         * Parses clouds data and provides methods to get/access the same
+         * information. This class provides <code>has</code> and
+         * <code>get</code> methods to access the information.
          * </p>
          * <p>
-         * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-         * (successfully downloaded) and was parsed correctly.
-         * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-         * methods will give value as per following basis:
-         * Boolean: <code>false</code>
-         * Integral: Minimum value (MIN_VALUE)
-         * Floating point: Not a number (NaN)
-         * Others: <code>null</code>
+         * <code>has</code> methods can be used to check if the data exists,
+         * i.e., if the data was available (successfully downloaded) and was
+         * parsed correctly. <code>get</code> methods can be used to access the
+         * data, if the data exists, otherwise <code>get</code> methods will
+         * give value as per following basis: Boolean: <code>false</code>
+         * Integral: Minimum value (MIN_VALUE) Floating point: Not a number
+         * (NaN) Others: <code>null</code>
          * </p>
          *
          * @author Ashutosh Kumar Singh
@@ -234,18 +254,18 @@ public class HourlyForecast extends AbstractForecast {
 
         /**
          * <p>
-         * Parses main data and provides methods to get/access the same information.
-         * This class provides <code>has</code> and <code>get</code> methods to access the information.
+         * Parses main data and provides methods to get/access the same
+         * information. This class provides <code>has</code> and
+         * <code>get</code> methods to access the information.
          * </p>
          * <p>
-         * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-         * (successfully downloaded) and was parsed correctly.
-         * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-         * methods will give value as per following basis:
-         * Boolean: <code>false</code>
-         * Integral: Minimum value (MIN_VALUE)
-         * Floating point: Not a number (NaN)
-         * Others: <code>null</code>
+         * <code>has</code> methods can be used to check if the data exists,
+         * i.e., if the data was available (successfully downloaded) and was
+         * parsed correctly. <code>get</code> methods can be used to access the
+         * data, if the data exists, otherwise <code>get</code> methods will
+         * give value as per following basis: Boolean: <code>false</code>
+         * Integral: Minimum value (MIN_VALUE) Floating point: Not a number
+         * (NaN) Others: <code>null</code>
          * </p>
          *
          * @author Ashutosh Kumar Singh
@@ -272,9 +292,17 @@ public class HourlyForecast extends AbstractForecast {
             Main(JSONObject jsonObj) {
                 super(jsonObj);
 
-                this.seaLevel = (jsonObj != null) ? (float) jsonObj.optDouble(JSON_MAIN_SEA_LEVEL, Float.NaN) : Float.NaN;
-                this.groundLevel = (jsonObj != null) ? (float) jsonObj.optDouble(JSON_MAIN_GRND_LEVEL, Float.NaN) : Float.NaN;
-                this.tempKF = (jsonObj != null) ? (float) jsonObj.optDouble(JSON_MAIN_TMP_KF, Float.NaN) : Float.NaN;
+                this.seaLevel = (jsonObj != null)
+                        ? (float) jsonObj.optDouble(JSON_MAIN_SEA_LEVEL,
+                                Float.NaN)
+                        : Float.NaN;
+                this.groundLevel = (jsonObj != null)
+                        ? (float) jsonObj.optDouble(JSON_MAIN_GRND_LEVEL,
+                                Float.NaN)
+                        : Float.NaN;
+                this.tempKF = (jsonObj != null)
+                        ? (float) jsonObj.optDouble(JSON_MAIN_TMP_KF, Float.NaN)
+                        : Float.NaN;
             }
 
             public boolean hasSeaLevel() {
@@ -304,18 +332,18 @@ public class HourlyForecast extends AbstractForecast {
 
         /**
          * <p>
-         * Parses sys data and provides methods to get/access the same information.
-         * This class provides <code>has</code> and <code>get</code> methods to access the information.
+         * Parses sys data and provides methods to get/access the same
+         * information. This class provides <code>has</code> and
+         * <code>get</code> methods to access the information.
          * </p>
          * <p>
-         * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-         * (successfully downloaded) and was parsed correctly.
-         * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-         * methods will give value as per following basis:
-         * Boolean: <code>false</code>
-         * Integral: Minimum value (MIN_VALUE)
-         * Floating point: Not a number (NaN)
-         * Others: <code>null</code>
+         * <code>has</code> methods can be used to check if the data exists,
+         * i.e., if the data was available (successfully downloaded) and was
+         * parsed correctly. <code>get</code> methods can be used to access the
+         * data, if the data exists, otherwise <code>get</code> methods will
+         * give value as per following basis: Boolean: <code>false</code>
+         * Integral: Minimum value (MIN_VALUE) Floating point: Not a number
+         * (NaN) Others: <code>null</code>
          * </p>
          *
          * @author Ashutosh Kumar Singh
@@ -332,11 +360,13 @@ public class HourlyForecast extends AbstractForecast {
             }
 
             Sys(JSONObject jsonObj) {
-                this.pod = (jsonObj != null) ? jsonObj.optString(JSON_SYS_POD, null) : null;
+                this.pod = (jsonObj != null)
+                        ? jsonObj.optString(JSON_SYS_POD, null)
+                        : null;
             }
 
             public boolean hasPod() {
-                return this.pod != null && (! "".equals(this.pod));
+                return this.pod != null && (!"".equals(this.pod));
             }
 
             public String getPod() {
@@ -346,18 +376,18 @@ public class HourlyForecast extends AbstractForecast {
 
         /**
          * <p>
-         * Parses wind data and provides methods to get/access the same information.
-         * This class provides <code>has</code> and <code>get</code> methods to access the information.
+         * Parses wind data and provides methods to get/access the same
+         * information. This class provides <code>has</code> and
+         * <code>get</code> methods to access the information.
          * </p>
          * <p>
-         * <code>has</code> methods can be used to check if the data exists, i.e., if the data was available
-         * (successfully downloaded) and was parsed correctly.
-         * <code>get</code> methods can be used to access the data, if the data exists, otherwise <code>get</code>
-         * methods will give value as per following basis:
-         * Boolean: <code>false</code>
-         * Integral: Minimum value (MIN_VALUE)
-         * Floating point: Not a number (NaN)
-         * Others: <code>null</code>
+         * <code>has</code> methods can be used to check if the data exists,
+         * i.e., if the data was available (successfully downloaded) and was
+         * parsed correctly. <code>get</code> methods can be used to access the
+         * data, if the data exists, otherwise <code>get</code> methods will
+         * give value as per following basis: Boolean: <code>false</code>
+         * Integral: Minimum value (MIN_VALUE) Floating point: Not a number
+         * (NaN) Others: <code>null</code>
          * </p>
          *
          * @author Ashutosh Kumar Singh

@@ -37,7 +37,8 @@ public class DailyForecastTest {
 
     public static void main(String[] args) throws IOException {
         OpenWeatherMap owm = new OpenWeatherMap(Testing.loadApiKey());
-        DailyForecast df = owm.dailyForecastByCityName("London, UK", Byte.parseByte("5"));
+        DailyForecast df = owm.dailyForecastByCityName("London, UK",
+                Byte.parseByte("5"));
 
         if (!df.isValid()) {
             System.out.println("Reponse is inValid!");
@@ -58,13 +59,15 @@ public class DailyForecastTest {
                 }
             }
 
-            System.out.println("Total forecast instances: " + df.getForecastCount());
+            System.out.println(
+                    "Total forecast instances: " + df.getForecastCount());
             System.out.println();
 
             for (int i = 0; i < df.getForecastCount(); i++) {
                 DailyForecast.Forecast forecast = df.getForecastInstance(i);
 
-                System.out.println("*** Forecast instance number " + (i+1) + " ***");
+                System.out.println(
+                        "*** Forecast instance number " + (i + 1) + " ***");
 
                 if (forecast.hasDateTime()) {
                     System.out.println(forecast.getDateTime());
