@@ -304,7 +304,8 @@ public class OpenWeatherMap {
      */
     public static enum Units {
         METRIC("metric"),
-        IMPERIAL("imperial");
+        IMPERIAL("imperial"),
+        KELVIN("kelvin");
 
         private final String unit;
 
