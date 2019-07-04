@@ -28,10 +28,13 @@ import org.json.JSONObject;
 
 /**
  * <p>
- * Provides default behaviours and implementations for: 1.
- * {@link net.aksingh.owmjapis.HourlyForecast} 2.
- * {@link net.aksingh.owmjapis.DailyForecast} It defines common methods like
- * <code>has</code>, <code>get</code> and some others.
+ * Provides default behaviours and implementations for:
+ * <ol>
+ * <li>{@link net.aksingh.owmjapis.HourlyForecast}</li>
+ * <li>{@link net.aksingh.owmjapis.DailyForecast}</li>
+ * </ol>
+ * It defines common methods like <code>has</code>, <code>get</code> and some
+ * others.
  * </p>
  *
  * @author Ashutosh Kumar Singh
