@@ -12,22 +12,15 @@ This is a fork of [akapribot/OWM-JAPIs](https://github.com/akapribot/OWM-JAPIs) 
 in favor of a Kotlin rewrite: [aksinghnet/OWM-JAPIs](https://github.com/aksinghnet/OWM-JAPIs).
 I prefer this Java-based version and intent to maintain it and add bugfixes.
 
+See the [Changelog](CHANGELOG.md) for details of the project's evolution.
+
 
 ## How to use OWM JAPIs?
 Download the library's source and binaries from [OWM JAPIs Downloads][1].
 
 Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central repository][10].
 
-
-
-## Versions
-
-See the [Changelog](CHANGELOG.md).
-
-
-## Usage
-
-See the [Usage](USAGE.md).
+See the [Usage](USAGE.md) for source code examples.
 
 
 ## Developer
