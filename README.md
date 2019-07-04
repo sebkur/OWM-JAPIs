@@ -39,18 +39,6 @@ See the [Changelog](CHANGELOG.md).
 See the [Usage](USAGE.md).
 
 
-## Source code
-Download the library's source code from [OWM JAPIs Source][2].
-
-
-
-## Bugs / Requests
-Got a problem, error or bug in the library? Or want a new feature that's not already available in OWM JAPIs?
-
-Kindly post bugs or feature requests at [OWM JAPIs Issues][3] and I will try to solve/add it in the next release.
-
-
-
 ## Developer
 **Ashutosh Kumar Singh** | [AKSingh.net][4] | [me@aksingh.net][9]
 
