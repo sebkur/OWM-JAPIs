@@ -13,15 +13,6 @@ in favor of a Kotlin rewrite: [aksinghnet/OWM-JAPIs](https://github.com/aksinghn
 I prefer this Java-based version and intent to maintain it and add bugfixes.
 
 
-### Why to use OWM JAPIs?
-1. Free
-2. Easy to use
-3. Minimizes your code
-
-OWM JAPIs lets you **focus just on your application's logic** and **weather retrieval code is provided** by this library. Additionally, weather retrieval code becomes very short using this library – as less as 3-5 lines of code can get you weather data from OpenWeatherMap.org in your Java or Android application. **Surprising, right? Have a look on the example(s) below.**
-
-
-
 ## How to use OWM JAPIs?
 Download the library's source and binaries from [OWM JAPIs Downloads][1].
 
