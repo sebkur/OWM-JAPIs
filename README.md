@@ -23,8 +23,9 @@ Do use Maven, Gradle or an build tool? [OWM JAPIs is available in Maven Central 
 See the [Usage](USAGE.md) for source code examples.
 
 
-## Developer
-**Ashutosh Kumar Singh** | [AKSingh.net][4] | [me@aksingh.net][9]
+## Developers
+* **Ashutosh Kumar Singh** | [AKSingh.net][4] | [me@aksingh.net][9]
+* **Sebastian Kürten**
 
 
 
