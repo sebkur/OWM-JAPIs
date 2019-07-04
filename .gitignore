@@ -11,3 +11,4 @@ owm-japis.iml
 .project
 .classpath
 .settings
+/src/test/resources/secure.properties

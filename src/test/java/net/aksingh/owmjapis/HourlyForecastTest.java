@@ -36,7 +36,7 @@ import java.io.IOException;
 public class HourlyForecastTest {
 
     public static void main(String[] args) throws IOException {
-        OpenWeatherMap owm = new OpenWeatherMap("");
+        OpenWeatherMap owm = new OpenWeatherMap(Testing.loadApiKey());
         HourlyForecast hf = owm.hourlyForecastByCityName("London, UK");
 
         if (!hf.isValid()) {

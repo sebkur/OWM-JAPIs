@@ -36,7 +36,7 @@ import java.io.IOException;
 public class CurrentWeatherTest {
 
     public static void main(String[] args) throws IOException {
-        OpenWeatherMap owm = new OpenWeatherMap("");
+        OpenWeatherMap owm = new OpenWeatherMap(Testing.loadApiKey());
         CurrentWeather cw = owm.currentWeatherByCityName("London, UK");
 
         if (!cw.isValid()) {
