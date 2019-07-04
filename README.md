@@ -47,13 +47,10 @@ See the [Usage](USAGE.md).
 ## Credits
 1. [OpenWeatherMap.org][5]
 for providing free weather data and creating easy-to-use web APIs.
-
 2. [JSON.org][6] 
 for providing such a great data interchange language and its library in Java.
-
 3. [ForecastIO-Lib-Java][8]
 for providing ideas like support for third-party Http libraries.
-
 4. [Bug Reporters][3]
 for reporting bugs, and even finding and sharing possible solutions for them.
 
