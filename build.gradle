@@ -37,11 +37,11 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-signing {
-    sign configurations.archives
-}
-
 if (project.hasProperty("upload")) {
+    signing {
+        sign configurations.archives
+    }
+
     uploadArchives {
         repositories {
             mavenDeployer {
